@@ -10,16 +10,18 @@ from bot.openai_client import OpenAIClient
 from bot.mood_manager import MoodManager
 from bot.relationship_manager import RelationshipManager
 from bot.rcon_client import RconClient
+from bot.config_manager import ConfigManager
 import discord
 
 # Load environment variables from .env file
 load_dotenv()
 
 def main():
-    # Initialize the context, mood, and relationship managers without a database
+    # Initialize the context, mood, relationship, and configuration managers without a database
     context_manager = ContextManager()
     mood_manager = MoodManager()
     relationship_manager = RelationshipManager()
+    config_manager = ConfigManager()
 
     # Initialize the OpenAI client with the API key
     openai_client = OpenAIClient(os.getenv('OPENAI_API_KEY'))
