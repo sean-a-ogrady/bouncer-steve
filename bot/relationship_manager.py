@@ -1,7 +1,7 @@
 class RelationshipManager:
     """Manages individualized relationships with users."""
     
-    def __init__(self, database):
+    def __init__(self):
         """Initialize the RelationshipManager with a database connection."""
         # self.database = database
     

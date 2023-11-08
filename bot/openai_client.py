@@ -1,7 +1,7 @@
 class OpenAIClient:
     """Client to manage communication with OpenAI's API."""
     
-    def __init__(self):
+    def __init__(self, api_key):
         """Initialize the OpenAI client with necessary credentials."""
         pass
     

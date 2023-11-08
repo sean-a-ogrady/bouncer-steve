@@ -10,6 +10,7 @@ from bot.openai_client import OpenAIClient
 from bot.mood_manager import MoodManager
 from bot.relationship_manager import RelationshipManager
 from bot.rcon_client import RconClient
+import discord
 
 # Load environment variables from .env file
 load_dotenv()
@@ -21,7 +22,7 @@ def main():
     relationship_manager = RelationshipManager()
 
     # Initialize the OpenAI client with the API key
-    openai_client = OpenAIClient(api_key=os.getenv('OPENAI_API_KEY'))
+    openai_client = OpenAIClient(os.getenv('OPENAI_API_KEY'))
 
     # Initialize the RCON client with the necessary details
     rcon_client = RconClient(
@@ -41,8 +42,11 @@ def main():
     )
 
     # Start the Discord bot client using the bot token
-    bot_client.run(os.getenv('DISCORD_TOKEN'))
-
+    bot_token = os.getenv('DISCORD_TOKEN')
+    if not bot_token:
+        raise ValueError("No DISCORD_TOKEN found. Restart, add the token, and try again.")
+    else:
+        bot_client.run(bot_token)
 if __name__ == '__main__':
     main()
 
