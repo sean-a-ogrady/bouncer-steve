@@ -2,6 +2,9 @@
 # pip install <libarary name>
 # pip freeze > requirements.txt
 
+# NOTE: I will need to change much of the code to support Steve being used on different servers.
+#       I need to consider which thinga are server-specific about Steve
+
 import os
 from dotenv import load_dotenv
 from bot.discord_client import DiscordBotClient
@@ -11,6 +14,7 @@ from bot.mood_manager import MoodManager
 from bot.relationship_manager import RelationshipManager
 from bot.rcon_client import RconClient
 from bot.config_manager import ConfigManager
+from bot.usage_logger import UsageLogger
 import discord
 
 # Load environment variables from .env file
@@ -22,6 +26,7 @@ def main():
     mood_manager = MoodManager()
     relationship_manager = RelationshipManager()
     config_manager = ConfigManager()
+    usage_logger = UsageLogger()
 
     # Initialize the OpenAI client with the API key
     openai_client = OpenAIClient(os.getenv('OPENAI_API_KEY'))
@@ -50,6 +55,8 @@ def main():
         relationship_manager=relationship_manager,
         openai_client=openai_client,
         rcon_client=rcon_client,
+        config_manager=config_manager,
+        usage_logger=usage_logger,
         intents=intents
     )
 

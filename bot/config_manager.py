@@ -6,7 +6,7 @@ class ConfigManager:
         self.current_config = 'chat_completions'
         self.configurations = {
             'chat_completions': {
-                'api_type': 'completions',
+                'api_type': 'chat_completions',
                 'context_manager': 'self',
             },
             'assistants': {
