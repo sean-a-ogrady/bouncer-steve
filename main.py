@@ -57,6 +57,7 @@ def main():
         raise ValueError("No DISCORD_TOKEN found. Restart, add the token, and try again.")
     else:
         bot_client.run(bot_token)
+
 if __name__ == '__main__':
     main()
 
