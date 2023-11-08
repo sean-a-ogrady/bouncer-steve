@@ -31,6 +31,16 @@ def main():
         password=os.getenv('RCON_PASSWORD')
     )
 
+    # Set necessary intents for Discord client
+    # Review the link to see each intent and associated functions
+    # https://discordpy.readthedocs.io/en/stable/api.html?highlight=intents#discord.Intents
+    intents = discord.Intents.default()
+
+    intents.guild_messages = True
+    intents.members = True
+    intents.message_content = True
+
+
     # Initialize the Discord bot client and pass in the other managers
     bot_client = DiscordBotClient(
         context_manager=context_manager,
@@ -38,7 +48,7 @@ def main():
         relationship_manager=relationship_manager,
         openai_client=openai_client,
         rcon_client=rcon_client,
-        intents=discord.Intents.default()  # Set the necessary Discord intents
+        intents=intents
     )
 
     # Start the Discord bot client using the bot token
