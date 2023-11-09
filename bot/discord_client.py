@@ -1,5 +1,5 @@
 import discord
-
+import re
 class DiscordBotClient(discord.Client):
     """Client to interact with the Discord API and process events."""
     
@@ -26,6 +26,8 @@ class DiscordBotClient(discord.Client):
         # Check if the bot is mentioned
         bot_mention = f'<@{self.user.id}>'
         role_mention = f'<@&{self.user.id}>'
+        # Pattern to match both bot and role mentions
+        mention_pattern = re.compile(f"<@!?&?{self.user.id}>")
         response = None
         current_config = self.config_manager.get_current_config()['api_type']
         # Don't respond to messages from the bot itself
@@ -35,8 +37,9 @@ class DiscordBotClient(discord.Client):
         if message.content.startswith('<CONFIG>'):
             await self.__change_openai_config(message)
             return
-        if bot_mention in message.content or role_mention in message.content:
-            # Get response and log everything
+        if mention_pattern.search(message.content):
+            # Replace mentions with an empty string
+            message.content = mention_pattern.sub("", message.content)
             response = await self.openai_client.generate_response(message, current_config)
         if response is not None:
             await message.channel.send(response.choices[0].message.content)
@@ -48,6 +51,7 @@ class DiscordBotClient(discord.Client):
                 user_name=message.author.name,
                 user_id=str(message.author.id),
                 config_name=current_config,
+                openai_model=self.openai_client.model,
                 prompt=message.content,
                 response=response.choices[0].message.content,
                 prompt_tokens=str(response.usage.prompt_tokens),
