@@ -16,17 +16,17 @@ class UsageLogger:
         if not os.path.isfile(self.csv_file):
             with open(self.csv_file, 'w', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow(['timestamp', 'server_name', 'server_id', 'channel_name', 
-                                 'user_name', 'user_id', 'config_name', 'prompt', 'response', 
-                                 'tokens_used', 'message_id', 'response_time', 'bot_mood', 
-                                 'prompt_timestamp', 'interaction_type', 'cost_info'])
+                writer.writerow(['prompt_timestamp', 'server_name', 'server_id', 'channel_name', 
+                                 'user_name', 'user_id', 'config_name', 'prompt', 'response', 'prompt_tokens', 'completion_tokens',
+                                 'total_tokens', 'message_id', 'response_time', 'bot_mood', 
+                                'interaction_type', 'cost_info'])
 
     def log_usage(self, server_name, server_id, channel_name, user_name, user_id, config_name, 
-                  prompt, response, tokens_used, message_id, response_time, bot_mood, 
+                  prompt, response, prompt_tokens, completion_tokens, total_tokens, message_id, response_time, bot_mood, 
                   prompt_timestamp, interaction_type, cost_info):
         """Log the usage of an OpenAI configuration with detailed server, channel, and user info."""
         log_entry = [
-            datetime.now().isoformat(),  # Current timestamp
+            prompt_timestamp,            # Timestamp of when the prompt was created
             server_name,                 # Name of the server where the interaction took place
             server_id,                   # ID of the server
             channel_name,                # Name of the channel where the interaction took place
@@ -35,11 +35,12 @@ class UsageLogger:
             config_name,                 # Name of the OpenAI configuration used
             prompt,                      # The prompt that was sent to the OpenAI API
             response,                    # The response received from the OpenAI API
-            tokens_used,                 # The number of tokens used by the OpenAI API
+            prompt_tokens,               # The number of tokens used by the OpenAI API for the prompt
+            completion_tokens,           # The number of tokens used by the OpenAI API for the completion
+            total_tokens,                # The total number of tokens used by the OpenAI API
             message_id,                  # ID of the message that triggered the bot's response
             response_time,               # Time taken by the bot to respond
             bot_mood,                    # Mood of the bot during the interaction
-            prompt_timestamp,            # Timestamp of when the prompt was created
             interaction_type,            # Type of interaction (command, mention, etc.)
             cost_info                    # Cost information provided by the OpenAI API
         ]
