@@ -30,19 +30,28 @@ class DiscordBotClient(discord.Client):
         mention_pattern = re.compile(f"<@!?&?{self.user.id}>")
         response = None
         current_config = self.config_manager.get_current_config()['api_type']
+
         # Don't respond to messages from the bot itself
         # NOTE: These should still be logged in the thread
         if message.author.id == self.user.id:
             return
+        
+        # Check for the configuration command
         if message.content.startswith('<CONFIG>'):
             await self.__change_openai_config(message)
             return
+        
+        # Check to see if the bot is mentioned in the message
         if mention_pattern.search(message.content):
             # Replace mentions with an empty string
             message.content = mention_pattern.sub("", message.content)
+            # Generate a response from the OpenAI module to the message
             response = await self.openai_client.generate_response(message, current_config)
+        
+        # Check to see if there was a successful response from the OpenAI module
         if response is not None:
             await message.channel.send(response.choices[0].message.content)
+            # Log details about the interaction event
             self.usage_logger.log_usage(
                 prompt_timestamp=message.created_at.isoformat(),
                 server_name=message.guild.name,
@@ -81,6 +90,7 @@ class DiscordBotClient(discord.Client):
 
 
     async def __change_openai_config(self, message):
+        """Change the configuration of the bot between chat_completions, assistants, and fine_tuned"""
         # if not message.author.guild_permissions.administrator and not message.author.guild_permissions.manage_guild:
         if message.author.id != 97130788482449408:
             # await message.channel.send(f"{message.author.name} does not have sufficient rights to invoke <CONFIG>.")

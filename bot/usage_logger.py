@@ -16,11 +16,10 @@ class UsageLogger:
         if not os.path.isfile(self.csv_file):
             with open(self.csv_file, 'w', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow(['prompt_timestamp', 'server_name', 'server_id', 'channel_name', 
-                                 'user_name', 'user_id', 'config_name', 'openai_model', 'prompt', 'response', 'prompt_tokens', 'completion_tokens',
-                                 'total_tokens', 'message_id', 'response_time', 'bot_mood', 
-                                'interaction_type', 'cost_info'])
-
+                writer.writerow(['prompt_timestamp', 'server_name', 'server_id', 'channel_name', 'user_name', 'user_id', 
+                                 'config_name', 'openai_model', 'prompt', 'response', 'prompt_tokens', 'completion_tokens',
+                                 'total_tokens', 'message_id', 'response_time', 'bot_mood',  'interaction_type', 'cost_info'])
+                               
     def log_usage(self, server_name, server_id, channel_name, user_name, user_id, config_name, openai_model,
                   prompt, response, prompt_tokens, completion_tokens, total_tokens, message_id, response_time, bot_mood, 
                   prompt_timestamp, interaction_type, cost_info):
