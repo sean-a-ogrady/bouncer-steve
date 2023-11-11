@@ -67,6 +67,7 @@ You'll need to set up your environment variables with your Discord bot token and
     - Go to the [Discord Developer Portal](https://discord.com/developers/applications).
     - Click "New Application" and name it "Bouncer Steve".
     - Go to the "Bot" tab and click "Add Bot".
+    - Name the bot "Bouncer Steve"
     - Uncheck "Public Bot", and check all of the Privileged Gateway Intents.
     - Click "Reset Token" and copy the new token.
 
