@@ -137,7 +137,7 @@ And that's it! Bouncer Steve will now appear in the member list of your server, 
 
 ### Running the Bot
 
-1. Start Bouncer Steve by running:
+1. Start Bouncer Steve by running the following in the project directory:
 
 ```bash
 python main.py
