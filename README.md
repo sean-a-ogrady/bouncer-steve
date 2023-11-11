@@ -10,7 +10,7 @@ Bouncer Steve isn't just any bot. He's the bot you want on your side when things
 Beneath that pixelated exterior beats the heart of a bot who cares — Steve's always looking to make a connection, engage in conversation, and remember what makes each member of your server tick.
 
 ## Ready to Get Started?
-Steve is currently in alpha, so the following instructions won't be needed in the upcoming release. Below you'll find all the details you need to get Bouncer Steve up and running in your Discord server. Follow along, and let the fun begin!
+Steve is currently in alpha, so the following instructions won't be needed in the upcoming release. Below you'll find all the details you need to get Bouncer Steve up and running in your Discord server.
 
 ## Project Directory Hierarchy
 
@@ -145,13 +145,15 @@ python main.py
 
 2. Bouncer Steve should now be active in your Discord server!
 
-## Feature Roadmap
+## Future Features
 
 - [x] Mention **@Bouncer Steve** in chat and he will respond!
 - [ ] Interface with your Minecraft server's console through Steve for whitelist management
 - [ ] Steve responds with context from the current conversation
 - [ ] Steve remembers his past interactions with members of the server
 - [ ] Steve has an internal mood state that affects his interactions
+- [ ] Database for Steve and deployment on AWS
+- [ ] Steve can search the internet to get an opinion on current events
 - [ ] More features to come! Reach out to me at ogrady.sean.a@gmail.com with feature requests!
 
 ## Credits
