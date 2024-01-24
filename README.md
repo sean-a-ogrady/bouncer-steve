@@ -2,7 +2,7 @@
 
 ![](https://cdn.discordapp.com/attachments/335080098715795456/1172616570380505118/image.png?ex=6560f748&is=654e8248&hm=a3c3b2cf839c4c525843ad93346f109504b5c85e213430eb24c1cc33f30e54e8&)
 
-Introducing Bouncer Steve, the virtual bouncer of your Discord server! Steve from Minecraft has since hung up his pickaxe and has started moonlighting as your personal digital bouncer. He's a friendly yet firm presence in your server who's always ready to lend a helping hand or drop some words of wisdom, all with a mild Brooklyn accent.
+Introducing Bouncer Steve, the virtual bouncer of your Discord server! Steve from Minecraft has since hung up his pickaxe and has started moonlighting as your personal digital bouncer. He's a friendly yet firm presence in your server who's always ready to lend a helping hand or drop some words of wisdom with a mild Brooklyn accent.
 
 ## What Does Steve Do?
 Bouncer Steve isn't just any bot. He's the bot you want on your side when things get dicey in the digital world. Whether you need advice or someone to interface with your Minecraft server's console without breaking a sweat, Steve's your guy. All you need to do is give him a mention (@Bouncer Steve), and he'll come running ready to chat, engage, and bring a smile to your server's face.
